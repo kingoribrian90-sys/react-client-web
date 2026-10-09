@@ -1,0 +1,448 @@
+@import "./tailwind.css";
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(var(--bg),rgba(192, 132, 252, 0.5));
+}
+
+#root {
+  width: min(100%, 1126px);
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+  text-align: center;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+}
+
+
+
+
+
+
+.details {
+  flex: 1 1 min(220px, 100%);
+  max-width: 280px;
+  min-width: 180px;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.details.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.details img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 0 0.85rem;
+    margin-top: 1rem;
+  }
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+
+
+
+
+/* Sticky WhatsApp button */
+.whatsapp-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  z-index: 9999;
+  text-decoration: none;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.whatsapp-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+.whatsapp-button svg { display: block; }
+
+
+
+/* Products component styles */
+#products h2,
+#products h3 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  margin: 3rem 0;
+  margin-bottom: 1rem;
+}
+
+#products h2 {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.24px;
+  
+}
+
+#products h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#products p {
+  color:rgb(49, 189, 236);
+  margin-top:0.5rem;
+}
+
+/* home (hero) component styles */
+#home {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 1rem 0;
+}
+#home h1 {
+  font-size: 48px;
+  color:#e5e4e7
+}
+
+#home h2 {
+  font-size: 24px;
+  color: #e7e6e7;
+  margin-top: 0.5rem;
+}
+
+#home p {
+  font-weight: 500;
+  color: #41c0f2;
+  font-size: 18px;
+  margin-top: 0.25rem;
+}
+
+
+/* About component styles */
+#about {
+  padding: 1rem 0;
+  text-align: left;
+}
+#about p {
+  color: #56bae1;
+  font-size: large;
+}
+
+#about h2 {
+  font-weight: 700;
+}
+
+
+/* nav component style */
+#nav nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+#nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background-color: #38b000;
+  color: #0b1215;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+#nav a:hover {
+  transform: translatey(-5px);
+  box-shadow: var(--shadow);
+}
+
+.yorghurt,
+.mala,
+.cheese,
+.feeds {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 0 auto;
+}
+
+.details {
+  flex: 1 1 min(240px, 100%);
+  max-width: 280px;
+  min-width: 200px;
+}
+
+.details img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+#contact {
+  padding: 2rem 0 3rem;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 20px;
+  max-width: 520px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow);
+}
+
+#contact label {
+  display: grid;
+  gap: 0.35rem;
+  text-align: left;
+  color: #121212;
+  font-weight: 500;
+}
+
+#contact input,
+#contact textarea,
+#contact select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #faf9fb;
+  color:#1f41c9;
+  font: inherit;
+  box-sizing: border-box;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+#contact textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#contact input:focus,
+#contact textarea:focus,
+#contact select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(170, 59, 255, 0.12);
+}
+
+#contact button[type="submit"] {
+  align-self: flex-start;
+  padding: 0.95rem 1.75rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+#contact button[type="submit"]:hover {
+  transform: translateY(-1px);
+  background: #9a2ee3;
+  box-shadow: 0 10px 22px rgba(170, 59, 255, 0.18);
+}
+
+#contact form div {
+  margin-bottom: 0.5rem;
+}
+
+#contact h1,
+#contact h2,
+#contact p {
+  text-align: center;
+  color: #f5f5dc;
+}
+
+#footer {
+  width: 100%;
+  padding: 2rem 0;
+  text-align: left;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  color:#f5f5dc
+}
+
+#footer a{
+  margin: 2rem;
+}
+
+#footer svg{
+  margin-top:1rem;
+}
+
+#footer a:hover{
+  color: #41c0f2;
+}
+
+#footer .footer-links {
+  justify-content: center;
+}
+
+#about p {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  #root {
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  #home,
+  #about,
+  #products,
+  #contact,
+  #footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #contact form {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  #root {
+    padding: 0 0.75rem;
+    margin-top: 1rem;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  #contact button[type="submit"] {
+    width: 100%;
+    justify-content: center;
+  }
+}
